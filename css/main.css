@@ -17,3 +17,4 @@ h1 {font-size:2em;}
 #player .sp-list {width:inherit;max-height:inherit;}
 
 #fb_login{ cursor: pointer; }
+#events{ display: none; }
