@@ -6,9 +6,9 @@
 		"36x18": "tutorial.png"
 	},
 	"AppName": {
-		"en": "Spotify Apps API Tutorial"
+		"en": "Parti.fi"
 	},
-	"BundleIdentifier": "spotify-apps-tutorial",
+	"BundleIdentifier": "partifi",
 	"BundleType": "Application",
 	"BundleVersion": "0.1",
 	"DefaultTabs": [
@@ -21,7 +21,7 @@
 		{
 			"arguments": "tabs",
 			"title": {
-				"en": "How to use tabs"
+				"en": "Next tab"
 			}
         }
 	],
