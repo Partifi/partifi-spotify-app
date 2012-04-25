@@ -28,7 +28,6 @@ function get_facebook_events( accesstoken ){
     }).mouseleave(function(){
     	$(this).css('background-color','transparent');
     }).click(function(){
-    	$(this).css({'background-color':'#219c00','color':'#fff','text-shadow':'#333'});
     	console.log($(this).attr('data-id'));
     	localStorage.setObject("fb_event", $(this).attr('data-id'));
     	
