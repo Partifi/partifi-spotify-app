@@ -11,6 +11,20 @@
 	"BundleIdentifier": "partifi",
 	"BundleType": "Application",
 	"BundleVersion": "0.1",
+	"DefaultTabs": [
+		{
+			"arguments": "index",
+			"title": {
+				"en": "Home"
+			}
+		},
+		{
+			"arguments": "tabs",
+			"title": {
+				"en": "How to use tabs"
+			}
+        }
+	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
 	    "http://api.twitter.com",
