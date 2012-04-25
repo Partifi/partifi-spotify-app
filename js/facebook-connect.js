@@ -20,10 +20,8 @@ $(document).ready(function() {
     var app_id = '253709418060474';
 
 
-/*
 		if(!localStorage.getObject("fb_accessToken"))
 		{
-*/
     $('#fb-login').click(function(){
         auth.authenticateWithFacebook(app_id, permissions, {
             onSuccess: function(accessToken, ttl) {
@@ -36,12 +34,10 @@ $(document).ready(function() {
             onComplete: function() { }
         });
     });
-/*
     }else{
     	$('#status, #fb-login').remove();
     	
     	var accessToken = localStorage.getObject("fb_accessToken");
     	get_events( accessToken )
     }
-*/
 });
