@@ -10,34 +10,37 @@
             a:hover {color:#83be20;}
         </style>
         <script src="sp://partifi/js/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                sp = getSpotifyApi(1);
-                var models = sp.require('sp://import/scripts/api/models');
-                var gtrack = sp.require("sp://import/scripts/googletracker");
-                var tracker = new gtrack.GoogleTracker('UA–xxxxxxx–1');
-
-                tabs();
-                models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
-
-                function tabs() {
-                    var args = models.application.arguments;
-                    console.log(args[0]);
-                    $('.section').hide();
-                    $('#'+args[0]).show();
-                }
-            });
-        </script>
+        <script src="sp://partifi/js/functions.js"></script>
+        
+        <script src="sp://partifi/js/facebook-connect.js"></script>
+        
     </head>
     <body>
         <div id="wrapper">
-
 	        <div id="index" class="section">
 	            <h1>Parti.fi</h1>
-							
-							<a href="sp://partifi/tabs/home.html">Start</a>
-							<a href="sp://partifi/tabs/facebook-connect.html">Facebook connect</a>
-
+						
+						<h1 id="status">Login with Facebook</h1>
+						<img src="sp://partifi/img/fb-login.png" id="fb-login" />
+            <div id="status_msg"><p>If you've successfully authenticated with Facebook, this should be your access token:</p></div>
+            
+            <div id="user">
+            	<div id="user_photo"></div>
+            	<div id="user_info"></div>
+            </div>
+            <div id="events">
+            	<h1>Choose event</h1>
+            	<table width="100%">
+            		<thead>
+            			<tr>
+	            			<th>Date</th>
+	            			<th>Event</th>
+	            			<th>Location</th>
+            			</tr>
+            		</thead>
+            		<tbody></tbody>
+            	</table>
+            </div>
 	        </div><!-- /index -->
         
         </div><!-- /wrapper -->
