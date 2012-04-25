@@ -20,7 +20,7 @@ function get_facebook_events( accesstoken ){
       var event_location = events[i].location;
       var event_date = events[i].start_time.replace('T',' ');
       var event_id = events[i].id;
-      $('#events table tbody').append('<tr data-id='+event_id+'><td>'+event_date+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></li>');
+      $('#events table tbody').append('<tr data-id='+event_id+'><td>'+event_date+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></tr>');
     }
     
     $('#events table tbody tr').mouseenter(function(){
@@ -31,6 +31,8 @@ function get_facebook_events( accesstoken ){
     	$(this).css({'background-color':'#219c00','color':'#fff','text-shadow':'#333'});
     	console.log($(this).attr('data-id'));
     	localStorage.setObject("fb_event", $(this).attr('data-id'));
+    	
+		document.location.href = "sp://partifi/tabs/home.html";
     })
   })
   
@@ -64,8 +66,8 @@ $(document).ready(function() {
     var app_id = '253709418060474';
 
 
-		if(!localStorage.getObject("fb_accessToken"))
-		{
+	if(!localStorage.getObject("fb_accessToken"))
+	{
     $('#fb-login').click(function(){
         auth.authenticateWithFacebook(app_id, permissions, {
             onSuccess: function(accessToken, ttl) {
