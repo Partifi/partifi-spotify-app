@@ -16,5 +16,6 @@ h1 {font-size:2em;}
 #player .sp-player {float:left;margin-right:10px;}
 #player .sp-list {width:inherit;max-height:inherit;}
 
-#fb_login{ cursor: pointer; }
+#fb-login,#fb-logout{ cursor: pointer; }
+#fb-logout{ display: none; }
 #events{ display: none; }

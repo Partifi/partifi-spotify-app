@@ -4,6 +4,10 @@ Storage.prototype.getObject = function(key) {
 Storage.prototype.setObject = function(key, value) {
   this.setItem(key, JSON.stringify(value));
 };
+Storage.prototype.removeObject = function(key) {
+  this.removeItem(key);
+};
+
 
 function strtotime (str, now) {
     // http://kevin.vanzonneveld.net

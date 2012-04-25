@@ -8,9 +8,6 @@ function get_facebook_events( accesstoken ){
 	var url = request_url + '?since='+ strtotime( 'now' ) +'&until='+ strtotime( '+ 1 year' ) +'&access_token=' + accessToken + '';
   $.getJSON(url, function(data) {
   	$('#events').css('display','block');
-  	$('#fb-login').remove();  	
-  	$('#status').text('Logged in as');
-  	$('#status_msg').remove();
   	
   	var events = data.data
   	events.reverse();
@@ -38,6 +35,13 @@ function get_facebook_events( accesstoken ){
 }
 
 function get_facebook_user( ){
+	$('#fb-login').css('display','none');  	
+	$('#fb-logout').css('display','block');
+	
+	$('#status').text('Logged in as');
+  $('#status_msg').remove();
+  
+  	
 	// locally saved access token
 	var accessToken = localStorage.getObject("fb_accessToken");
 	
@@ -84,4 +88,9 @@ $(document).ready(function() {
     	get_facebook_events(  )
     	get_facebook_user( )
     }
+    
+    $('#fb-logout').click(function(){
+    	localStorage.removeObject("fb_accessToken")
+    	document.location.href = "sp://partifi/index.html";
+    })
 });
