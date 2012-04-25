@@ -28,7 +28,7 @@
                     $('#'+args[0]).show();
                 }
                 
-				updatePlaylist();
+				startPlaylist();
             });
         </script>
     </head>
@@ -39,7 +39,11 @@
 				<a href='sp://partifi/index.html'>Back</a>	        
 	            <h1>Parti.fi - Home</h1>
 				<div id="current-song">
-					<h2></h2>					
+					<h2></h2>
+					<h3>Lovers</h3>
+					<div id='lovers'></div>
+					<h3>Haters</h3>
+					<div id='haters'></div>
 				</div>
 				<div id="top10">
 					<h3>Next songs</h3>
@@ -51,12 +55,13 @@
 								<th>Artist</th>
 								<th>Love</th>
 								<th>Hate</th>
+								<th>Submitted by</th>
 							</tr>
 						</thead>
 						<tbody>
 						</tbody>
 					</table>				
-				</div>			
+				</div>
 	        </div><!-- /index -->
         
         </div><!-- /wrapper -->
