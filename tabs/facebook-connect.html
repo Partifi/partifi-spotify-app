@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('sp://import/css/eve.css');
+            @import url('sp://import/css/player.css');
+            @import url('sp://import/css/ui.css');
+            @import url('sp://partifi/css/main.css');
+            h1, ul {margin:0 0 30px;}
+            a:hover {color:#83be20;}
+        </style>
+        <script src="sp://partifi/js/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                sp = getSpotifyApi(1);
+                var models = sp.require('sp://import/scripts/api/models');
+                var gtrack = sp.require("sp://import/scripts/googletracker");
+                var tracker = new gtrack.GoogleTracker('UA–xxxxxxx–1');
+
+                tabs();
+                models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
+
+                function tabs() {
+                    var args = models.application.arguments;
+                    console.log(args[0]);
+                    $('.section').hide();
+                    $('#'+args[0]).show();
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+
+	        <div id="index" class="section">
+	            <h1>Parti.fi</h1>
+	
+	        </div><!-- /index -->
+        
+        </div><!-- /wrapper -->
+    </body>
+</html>
