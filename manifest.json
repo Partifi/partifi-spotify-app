@@ -1,14 +1,14 @@
 {
 	"AppDescription": {
-		"en": "A tutorial app for Spotify Apps API"
+		"en": "Parti.fi app"
 	},
 	"AppIcon": {
 		"36x18": "tutorial.png"
 	},
 	"AppName": {
-		"en": "Spotify Apps API Tutorial"
+		"en": "Parti.fi"
 	},
-	"BundleIdentifier": "spotify-apps-tutorial",
+	"BundleIdentifier": "Parti.fi",
 	"BundleType": "Application",
 	"BundleVersion": "0.1",
 	"DefaultTabs": [
@@ -18,12 +18,6 @@
 				"en": "Home"
 			}
 		},
-		{
-			"arguments": "tabs",
-			"title": {
-				"en": "How to use tabs"
-			}
-        }
 	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
@@ -43,5 +37,5 @@
 	"SupportedLanguages": [
 		"en"
 	],
-	"VendorIdentifier": "co.mager"
+	"VendorIdentifier": "Parti.fi"
 }
