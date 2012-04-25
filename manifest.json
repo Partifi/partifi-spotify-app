@@ -8,7 +8,11 @@
 	"AppName": {
 		"en": "Parti.fi"
 	},
+<<<<<<< HEAD
 	"BundleIdentifier": "Parti.fi",
+=======
+	"BundleIdentifier": "partifi",
+>>>>>>> 33153e7689024de95851e1b77bed9751ec059cef
 	"BundleType": "Application",
 	"BundleVersion": "0.1",
 	"DefaultTabs": [
@@ -18,6 +22,15 @@
 				"en": "Home"
 			}
 		},
+<<<<<<< HEAD
+=======
+		{
+			"arguments": "tabs",
+			"title": {
+				"en": "Next tab"
+			}
+        }
+>>>>>>> 33153e7689024de95851e1b77bed9751ec059cef
 	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
