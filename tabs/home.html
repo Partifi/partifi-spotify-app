@@ -10,6 +10,7 @@
             a:hover {color:#83be20;}
         </style>
         <script src="sp://partifi/js/jquery.min.js"></script>
+        <script src="sp://partifi/js/playlist.js"></script>
         <script>
             $(document).ready(function() {
                 sp = getSpotifyApi(1);
@@ -26,6 +27,8 @@
                     $('.section').hide();
                     $('#'+args[0]).show();
                 }
+                
+				updatePlaylist();
             });
         </script>
     </head>
@@ -33,10 +36,27 @@
         <div id="wrapper">
 
 	        <div id="index" class="section">
+				<a href='sp://partifi/index.html'>Back</a>	        
 	            <h1>Parti.fi - Home</h1>
-				
-				
-				
+				<div id="current-song">
+					<h2></h2>					
+				</div>
+				<div id="top10">
+					<h3>Next songs</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>&nbsp;</th>
+								<th>Song</th>
+								<th>Artist</th>
+								<th>Love</th>
+								<th>Hate</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>				
+				</div>			
 	        </div><!-- /index -->
         
         </div><!-- /wrapper -->
