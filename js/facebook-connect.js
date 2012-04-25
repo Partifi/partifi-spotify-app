@@ -22,6 +22,16 @@ function get_facebook_events( accesstoken ){
       var event_id = events[i].id;
       $('#events table tbody').append('<tr data-id='+event_id+'><td>'+event_date+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></li>');
     }
+    
+    $('#events table tbody tr').mouseenter(function(){
+    	$(this).css('background-color','#fff');
+    }).mouseleave(function(){
+    	$(this).css('background-color','transparent');
+    }).click(function(){
+    	$(this).css({'background-color':'#219c00','color':'#fff','text-shadow':'#333'});
+    	console.log($(this).attr('data-id'));
+    	localStorage.setObject("fb_event", $(this).attr('data-id'));
+    })
   })
   
 }
