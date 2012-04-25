@@ -35,7 +35,9 @@ $(document).ready(function() {
         });
     });
     }else{
-    	$('#status, #fb-login').remove();
+    	$('#fb-login').remove();
+    	
+    	$('#status').text('facebook is connected');
     	
     	var accessToken = localStorage.getObject("fb_accessToken");
     	get_events( accessToken )
