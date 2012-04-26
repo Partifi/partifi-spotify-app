@@ -17,8 +17,6 @@ $(function() {
 	
 	var removing = false;
 	
-//	$('#sad').play();
-	
 	models.player.observe(models.EVENT.CHANGE, function(event) {
 		
 		if (! models.player.playing) {
@@ -27,9 +25,17 @@ $(function() {
 			if (! models.player.track) {
 				updatePlaylist();
 				removeTrack(current);
+			} else {
+				clearTimeout(timeout);
+				timeout = null;
 			}
 		} else {
 			waitingToPlay = false;
+			
+			if (! timeout) {
+				timeout = setTimeout(updatePlaylist, pollingInterval);			
+			}
+			
 		}
 	});        
 	
@@ -50,7 +56,7 @@ $(function() {
 	
 	playlistLoadComplete = function(data) {
 		
-		console.log(data.Playlist[0].uri);
+		/* console.log(data.Playlist[0].uri); */
 		
 		if (models.player.playing && current && current.uri != data.Playlist[0].uri) {
 			current = null;
@@ -90,11 +96,14 @@ $(function() {
 		
 		console.log(current);
 		
-		models.Track.fromURI(current.uri, function(track) {
-			currentTrack = track;
+		models.Track.fromURI(current.href, function(track) {
 		
+			currentTrack = track;
+			
 			models.player.track = track;
 			models.player.playing = true;
+			
+			showCurrent();
 		});
 				
 	}
@@ -104,7 +113,7 @@ $(function() {
 				
 		waitingToPlay = true;	
 			
-		$.getJSON("http://parti.fi:9292/playlist/" + currentEventID, playlistLoadComplete);
+		$.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID, playlistLoadComplete);
 	}
 	
 	mergeArtists = function(track) {
@@ -138,13 +147,14 @@ $(function() {
 		list.empty();
 		
 		var ranking = 1;
-										
+		
 		$(data.Playlist).each(function(index, item) {
 			if (index <= start) return;
-					
-			var track = models.Track.fromURI(item.uri);
-						
-			list.append('<tr><td>' + ranking + '<td>' + track.name + '</td><td>' + mergeArtists(track) + '</td><td>' + facebookIcons(item.love) + '</td><td>' + facebookIcons(item.hate) + '</td><td>'+facebookIcons([item.love[0]])+'</td></tr>');
+			
+			item.love = [0];
+			item.hate = [];
+			
+			list.append('<tr><td>' + ranking + '<td>' + item.name + '</td><td>' + item.artist + '</td><td>' + facebookIcons(item.love) + '</td><td>' + facebookIcons(item.hate) + '</td><td>'+facebookIcons([item.love[0]])+'</td></tr>');
 			
 			ranking ++;
 		});
