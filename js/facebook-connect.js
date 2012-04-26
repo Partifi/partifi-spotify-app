@@ -6,10 +6,9 @@ function get_facebook_events( accesstoken ){
   var request_url = 'https://graph.facebook.com/me/events/';
 
   var url = request_url + '?since='+ strtotime( 'now' ) +'&until='+ strtotime( '+ 1 year' ) +'&access_token=' + accessToken + '';
-  console.log(url);
   $.getJSON(url, function(data) {
-    console.log("foo");
     $('#events').css('display','block');
+    $("#index").addClass("events");
 
     var events = data.data
     events.reverse();
@@ -17,9 +16,9 @@ function get_facebook_events( accesstoken ){
       /* console.log(events[i].name); */
       var event_name = events[i].name;
       var event_location = events[i].location;
-      var event_date = events[i].start_time.replace('T',' ');
+      var event_date = events[i].start_time;
       var event_id = events[i].id;
-      $('#events table tbody').append('<tr data-id='+event_id+'><td>'+event_date+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></tr>');
+      $('#events table tbody').append('<tr data-id='+event_id+'><td>'+$.timeago(event_date)+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></tr>');
     }
 
     $('#events table tbody tr').mouseenter(function(){
@@ -49,12 +48,14 @@ function get_facebook_user( ){
   $.getJSON(url, function(data) {
     var user = data;
     $('#user_photo').html('<img src="https://graph.facebook.com/'+user.id+'/picture" />');
-    $('#user_info').html('<h1>'+ user.name +'</h1>');
+    $('#user_info').html(''+ user.name +'<br><a href="#" id="fb-logout">log me out</a>');
   })
 
 }
 
 $(document).ready(function() {
+    //timeago
+    jQuery.timeago.settings.allowFuture = true;
     /* Instantiate the global sp object; include models */
     var sp = getSpotifyApi(1);
     var auth = sp.require('sp://import/scripts/api/auth');
@@ -90,7 +91,8 @@ $(document).ready(function() {
       get_facebook_user();
     }
 
-    $('#fb-logout').click(function(){
+    $('#fb-logout').live('click', function(){
+      console.log("foo");
       localStorage.removeObject("fb_accessToken")
       document.location.href = "sp://partifi/index.html";
     })
