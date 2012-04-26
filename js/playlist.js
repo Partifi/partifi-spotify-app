@@ -42,8 +42,7 @@ $(function() {
 	removeTrack = function(track) {
 		removing = true;
 		
-		$.post('updatedummy.json', {
-			uri: track.uri
+		$.post('http://partifi.herokuapp.com/song/' + currentEventID + "/" + track.href, {
 		}, function(data) {
 			removing = false;
 			
