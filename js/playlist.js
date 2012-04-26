@@ -42,9 +42,7 @@ $(function() {
   removeTrack = function(track) {
     removing = true;
 
-    $.post('updatedummy.json', {
-      uri: track.uri
-    }, function(data) {
+    $.post('http:///partifi.herokuapp.com/song/' + track.href, {}, function(data) {
       removing = false;
 
       if (timeout) clearTimeout(timeout);
@@ -89,7 +87,7 @@ $(function() {
       $('#haters').html(facebookIcons(current.hate)).height($('#current-song-image').height());
     });
   }
-
+  
   playNextSong = function(data, start) {
     if (! start) start = 0;
 
@@ -114,7 +112,7 @@ $(function() {
 
     waitingToPlay = true;
 
-		eventGuests( currentEventID );
+	eventGuests( currentEventID );
 
     $.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID, playlistLoadComplete);
   }
