@@ -104,7 +104,7 @@ $(function() {
 				
 		waitingToPlay = true;	
 			
-		$.getJSON("http://parti.fi:9292/playlist/" + currentEventID, playlistLoadComplete);
+		$.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID, playlistLoadComplete);
 	
 	mergeArtists = function(track) {
 		var ret = "";
