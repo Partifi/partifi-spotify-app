@@ -150,10 +150,16 @@ $(function() {
 		  var request_url = 'https://graph.facebook.com/' + event_id + '/attending';
 		
 		  var url = request_url + '?access_token=' + accessToken + '';
+		  $('#event_guests').html('');
 		  $.getJSON(url, function(data) { 
 		  	var guests = data.data;
 		  	for(var i=0;i<guests.length;i++) {
 		  		var guest_name = guests[i].name;
+		  		var guest_id = guests[i].id;
+		  		
+		  		var in_app = true;
+		  		
+		  		$('#event_guests').append('<img src="https://graph.facebook.com/' + guest_id + '/picture" title="' + guest_name + '"/>');
 		  	}
 		  })
 			
