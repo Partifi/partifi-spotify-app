@@ -6,6 +6,7 @@ function get_facebook_events( accesstoken ){
   var request_url = 'https://graph.facebook.com/me/events/';
 
   var url = request_url + '?since='+ strtotime( 'now' ) +'&until='+ strtotime( '+ 1 year' ) +'&access_token=' + accessToken + '';
+  console.log(url);
   $.getJSON(url, function(data) {
     console.log("foo");
     $('#events').css('display','block');
