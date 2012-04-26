@@ -151,16 +151,25 @@ $(function() {
 
 		  var url = request_url + '?access_token=' + accessToken + '';
 		  $('#event_guests').html('');
+		  
+		  $.getJSON("http://partifi.herokuapp.com/attendees/" + currentEventID + '?t=' + timestamp, function( attendees ){
+		  
 		  $.getJSON(url, function(data) {
 		  	var guests = data.data;
 		  	for(var i=0;i<guests.length;i++) {
 		  		var guest_name = guests[i].name;
 		  		var guest_id = guests[i].id;
 
+					if(inArray(guest_id, attendees)===true){
 		  		var in_app = 'active';
+		  		}else{
+		  		var in_app = '';
+		  		}
 
 		  		$('#event_guests').append('<img class="' + in_app + '" src="https://graph.facebook.com/' + guest_id + '/picture" title="' + guest_name + '"/>');
 		  	}
+		  })
+		  
 		  })
 
 	}
