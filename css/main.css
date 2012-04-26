@@ -202,3 +202,6 @@ float:left;
 }
 .eventlist h2 {color:#fff;text-shadow:none;}
 
+.eventlist img {opacity:0.35}
+.eventlist img.active{opacity:1;}
+
