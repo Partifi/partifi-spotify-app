@@ -99,12 +99,18 @@ $(function() {
 		
 			currentTrack = track;
 			
+			updateSong(track.uri, track.image);
+			
 			models.player.track = track;
 			models.player.playing = true;
 			
 			showCurrent();
 		});
 				
+	}
+	
+	updateSong = function(uri, img) {
+		$.post("http://partifi.herokuapp.com/update/" + uri, {img: img});
 	}
 	
 	updatePlaylist = function() {		
