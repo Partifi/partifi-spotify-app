@@ -17,8 +17,6 @@ $(function() {
 
   var removing = false;
 
-	var timestamp = new Date().getTime();
-
   models.player.observe(models.EVENT.CHANGE, function(event) {
 
     if (! models.player.playing) {
@@ -99,19 +97,19 @@ $(function() {
 
     models.Track.fromURI(current.href, function(track) {
 			
-			console.log(track);
-			
       currentTrack = track;
       
-			if(track.playable==true){
+			/* if(track.availableForPlayback==true){ */
 	      models.player.track = track;
 	      models.player.playing = true;
-      }else{
+      /*
+}else{
       	models.player.track = track;
       	
 	      removeTrack( current );
 	      updatePlaylist();
       }
+*/
 
       showCurrent();
     });
@@ -124,7 +122,7 @@ $(function() {
     waitingToPlay = true;
 
 	eventGuests( currentEventID );
-
+		var timestamp = new Date().getTime();
     $.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID + '?t=' + timestamp, playlistLoadComplete);
   }
 
@@ -163,7 +161,8 @@ $(function() {
 		  var url = request_url + '?access_token=' + accessToken + '';
 		  $('#event_guests').html('');
 		  
-		  $.getJSON("http://partifi.herokuapp.com/attendees/" + currentEventID + '?t=' + timestamp, function( attendees ){
+		  var timestamp = new Date().getTime();
+		  $.getJSON("http://partifi.herokuapp.com/attendees/" + currentEventID + '?v=' + timestamp, function( attendees ){
 		  
 		  $.getJSON(url, function(data) {
 		  	var guests = data.data;
