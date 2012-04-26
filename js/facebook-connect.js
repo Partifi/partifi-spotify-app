@@ -1,4 +1,4 @@
-function get_facebook_events( accesstoken ){
+function get_facebook_events( ){
   // locally saved access token
   var accessToken = localStorage.getObject("fb_accessToken");
 
