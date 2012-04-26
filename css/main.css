@@ -19,3 +19,43 @@ h1 {font-size:2em;}
 #fb-login,#fb-logout{ cursor: pointer; }
 #fb-logout{ display: none; }
 #events{ display: none; }
+
+
+/* design stuff */
+body {
+  background:#474747 url(../img/bg.png) repeat center;
+}
+
+#topbar {
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:50px;
+  background:#474747;
+  text-align:center;
+  padding:5px;
+  opacity:0;
+  -webkit-transition:opacity 1s;
+}
+  #topbar.active {opacity:1;}
+  #topbar h1 img {max-height:50px;}
+  #topbar #user {
+    position:absolute;
+    top:0;right:0;
+
+  }
+
+#index {
+  margin:100px auto;
+  position:relative;
+  width:400px;
+  background:#bcbbb8;
+  border:1px solid #111;
+  border-bottom-color:#fff;
+  border-radius:4px;
+  padding:40px;
+  text-align:center;
+  min-height:100px;
+  box-shadow:0px 5px 5px rgba(0,0,0,0.4) inset;
+  }
+

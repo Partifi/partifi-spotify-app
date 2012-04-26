@@ -3,7 +3,7 @@
 		"en": "Eliminate the 30 seconds djs"
 	},
 	"AppIcon": {
-		"36x18": "tutorial.png"
+		"36x18": "img/icon.png"
 	},
 	"AppName": {
 		"en": "Parti.fi"
@@ -17,13 +17,8 @@
 			"title": {
 				"en": "Home"
 			}
-		},
-		{
-			"arguments": "tabs",
-			"title": {
-				"en": "How to use tabs"
-			}
-        }
+		}
+  }
 	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
@@ -46,3 +41,4 @@
 	],
 	"VendorIdentifier": "parti.fi"
 }
+
