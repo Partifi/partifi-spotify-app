@@ -108,7 +108,7 @@ background-image: -webkit-gradient(
       font-weight:bold;
       display:block;
   }
-  #events.location {
+  #events .location {
     font-size:12px;
     color:#666;
     display:block;
