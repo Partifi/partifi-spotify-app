@@ -39,7 +39,14 @@
                   var user = data;
                   $('#user_photo').html('<img src="https://graph.facebook.com/'+user.id+'/picture" />');
                   $('#user_info').html(''+ user.name +'<br><a href="#" id="fb-logout">log me out</a>');
-                })
+                });
+
+                $('#fb-logout').live('click', function(){
+                  console.log("foo");
+                  localStorage.removeObject("fb_accessToken")
+                  document.location.href = "sp://partifi/index.html";
+                });
+
                 var eventID = localStorage.getObject("fb_event");
                 startPlaylist(eventID);
             });

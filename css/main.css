@@ -183,6 +183,7 @@ float:left;
   text-shadow:none;
 }
 #top10 h3 {color:#fff;}
+#top10 table {width:100%;}
 
 #top10 th {text-align:left;padding:5px;}
 #top10 tr td {vertical-align:top;border-bottom:1px solid #333;}
