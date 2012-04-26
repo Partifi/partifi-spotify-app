@@ -180,7 +180,7 @@ float:left;
  background:#f69 url(../img/heart-dislike.png) no-repeat center 2px;
 }
   #lovers img,
-  #haters img {max-width:100%;display:inline-block;}
+  #haters img {max-width:100%;display:block;}
 
 #top10 {
   color:#fff;
