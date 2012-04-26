@@ -96,7 +96,7 @@ $(function() {
 		console.log(current);
 		
 		models.Track.fromURI(current.href, function(track) {
-		
+
 			currentTrack = track;
 			
 			models.player.track = track;
@@ -149,7 +149,7 @@ $(function() {
 		
 		$(data.Playlist).each(function(index, item) {
 			if (index <= start) return;
-			
+						
 			item.love = [0];
 			item.hate = [];
 			
