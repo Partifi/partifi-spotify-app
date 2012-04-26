@@ -17,6 +17,8 @@ $(function() {
 	
 	var removing = false;
 	
+//	$('#sad').play();
+	
 	models.player.observe(models.EVENT.CHANGE, function(event) {
 		
 		if (! models.player.playing) {
@@ -65,8 +67,8 @@ $(function() {
 			current = data.Playlist[0];
 		}		
 		
-		showCurrent();
-
+		if (currentTrack) showCurrent();		
+		
 		createTop10(data, start);
 						
 		if (timeout) clearTimeout(timeout);
@@ -76,7 +78,7 @@ $(function() {
 	
 	showCurrent = function() {	
 		$('#current-song h2').text(currentTrack.artists[0].name + " - " + currentTrack.name);
-		
+		$('#current-song-image').html("<img src='"+currentTrack.image+"' />");
 		$('#lovers').html(facebookIcons(current.love));
 		$('#haters').html(facebookIcons(current.hate));
 	}
@@ -88,11 +90,13 @@ $(function() {
 		
 		console.log(current);
 		
-		currentTrack = models.Track.fromURI(current.uri);
+		models.Track.fromURI(current.uri, function(track) {
+			currentTrack = track;
 		
-		models.player.track = currentTrack;
-		models.player.playing = true;
-		
+			models.player.track = track;
+			models.player.playing = true;
+		});
+				
 	}
 	
 	updatePlaylist = function() {		
@@ -100,7 +104,7 @@ $(function() {
 				
 		waitingToPlay = true;	
 			
-		$.getJSON("sp://partifi/dummy.json", playlistLoadComplete);
+		$.getJSON("http://parti.fi:9292/playlist/" + currentEventID, playlistLoadComplete);
 	}
 	
 	mergeArtists = function(track) {
@@ -149,8 +153,6 @@ $(function() {
 	
 	startPlaylist = function(eventID) {
 		
-		
-				
 		currentEventID = eventID;
 		
 		updatePlaylist();

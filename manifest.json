@@ -27,6 +27,7 @@
 	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
+	   	"http://parti.fi",
 	    "http://api.twitter.com",
 	    "http://o.scdn.co",
 	    "http://maps.googleapis.com",

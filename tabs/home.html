@@ -10,6 +10,7 @@
             a:hover {color:#83be20;}
         </style>
         <script src="sp://partifi/js/jquery.min.js"></script>
+        <script src="sp://partifi/js/functions.js"></script>
         <script src="sp://partifi/js/playlist.js"></script>
         <script>
             $(document).ready(function() {
@@ -28,17 +29,19 @@
                     $('#'+args[0]).show();
                 }
                 
-				startPlaylist();
+                var eventID = localStorage.getObject("fb_event");
+                
+				startPlaylist(eventID);
             });
         </script>
     </head>
     <body>
         <div id="wrapper">
-
 	        <div id="index" class="section">
 				<a href='sp://partifi/index.html'>Back</a>	        
 	            <h1>Parti.fi - Home</h1>
 				<div id="current-song">
+					<div id='current-song-image'></div>
 					<h2></h2>
 					<h3>Lovers</h3>
 					<div id='lovers'></div>
