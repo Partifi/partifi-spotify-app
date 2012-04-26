@@ -8,6 +8,13 @@ Storage.prototype.removeObject = function(key) {
   this.removeItem(key);
 };
 
+function inArray(needle, haystack) {
+    var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+        if(haystack[i] == needle) return true;
+    }
+    return false;
+}
 
 function strtotime (str, now) {
     // http://kevin.vanzonneveld.net
