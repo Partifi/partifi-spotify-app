@@ -17,6 +17,8 @@ $(function() {
 
   var removing = false;
 
+	var timestamp = new Date().getTime();
+	
   models.player.observe(models.EVENT.CHANGE, function(event) {
 
     if (! models.player.playing) {
@@ -83,8 +85,8 @@ $(function() {
   showCurrent = function() {
     $('#current-song h2').text(currentTrack.artists[0].name + " - " + currentTrack.name);
     $('#current-song-image').html("<img src='"+currentTrack.image+"' />").find("img").load(function () {
-      $('#lovers').html(facebookIcons(current.love)).height($('#current-song-image').height());
-      $('#haters').html(facebookIcons(current.hate)).height($('#current-song-image').height());
+      $('#lovers').html(facebookIcons(current.lovers)).height($('#current-song-image').height());
+      $('#haters').html(facebookIcons(current.haters)).height($('#current-song-image').height());
     });
   }
   
@@ -114,7 +116,7 @@ $(function() {
 
 	eventGuests( currentEventID );
 
-    $.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID, playlistLoadComplete);
+    $.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID + '?t=' + timestamp, playlistLoadComplete);
   }
 
   mergeArtists = function(track) {
@@ -155,9 +157,9 @@ $(function() {
 		  		var guest_name = guests[i].name;
 		  		var guest_id = guests[i].id;
 		  		
-		  		var in_app = true;
+		  		var in_app = 'active';
 		  		
-		  		$('#event_guests').append('<img src="https://graph.facebook.com/' + guest_id + '/picture" title="' + guest_name + '"/>');
+		  		$('#event_guests').append('<img class="' + in_app + '" src="https://graph.facebook.com/' + guest_id + '/picture" title="' + guest_name + '"/>');
 		  	}
 		  })
 			
@@ -176,10 +178,7 @@ $(function() {
     $(data.Playlist).each(function(index, item) {
       if (index <= start) return;
 
-      item.love = [0];
-      item.hate = [];
-
-      list.append('<tr><td>' + ranking + '<td>' + item.artist + '<br>' + item.name + '</td><td>' + facebookIcons(item.love) + '</td><td>' + facebookIcons(item.hate) + '</td><td>'+facebookIcons([item.love[0]])+'</td></tr>');
+      list.append('<tr><td>' + ranking + '<td>' + item.artist + '<br>' + item.name + '</td><td>' + item.lovers.length + '</td><td>' + item.haters.length + '</td><td>'+facebookIcons([item.lovers[0]])+'</td></tr>');
 
       ranking ++;
     });
