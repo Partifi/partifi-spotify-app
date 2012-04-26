@@ -10,7 +10,8 @@ function get_facebook_events( accesstoken ){
     $('#events').css('display','block');
     $("#index").addClass("events");
 
-    var events = data.data
+    var events = data.data;
+    console.log(events);
     events.reverse();
     for(var i=0;i<events.length;i++) {
       /* console.log(events[i].name); */
@@ -18,10 +19,13 @@ function get_facebook_events( accesstoken ){
       var event_location = events[i].location;
       var event_date = events[i].start_time;
       var event_id = events[i].id;
-      $('#events table tbody').append('<tr data-id='+event_id+'><td>'+$.timeago(event_date)+'</td><td>' + event_name + '</td><td>'+ event_location +'</td></tr>');
+      $('#events ul').append('<li data-id='+event_id+'>' +
+                             '<span class="name">' + event_name + '</span>' +
+                             '<span class="location">'+ event_location + '</span>' +
+                             '<span class="date">'+ $.timeago(event_date) + '</span></li>');
     }
 
-    $('#events table tbody tr').mouseenter(function(){
+    $('#events ul li').mouseenter(function(){
       $(this).css('background-color','#fff');
     }).mouseleave(function(){
       $(this).css('background-color','transparent');
