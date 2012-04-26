@@ -167,14 +167,17 @@ background-image: -webkit-gradient(
   float:left;
   width:10%;
   height:100%;
-  background:#6f6;
+  background:#6f6 url(../img/heart.png) no-repeat center 2px;
+  padding-top:40px;
 }
 #haters {
 float:left;
  width:10%;
  height:100%;
- background:#f66;
+ background:#f66 url(../img/heart-dislike.png) no-repeat center 2px;
 }
+  #lovers img,
+  #haters img {max-width:100%;display:inline-block;}
 
 #top10 {
   color:#fff;
@@ -185,7 +188,28 @@ float:left;
 
 #top10 th {text-align:left;padding:5px;}
 #top10 tr td {vertical-align:top;border-bottom:1px solid #333;}
+#top10 tr img {max-height:30px;}
 
+.heart {
+  background:url(../img/heart.png) no-repeat center;
+  font-weight:bold;
+  display:block;
+  width:34px;
+  height:27px;
+  line-height:27px;
+  text-align:center;
+  font-size:14px;
+}
+.hate {
+  background:url(../img/heart-dislike.png) no-repeat center;
+  font-weight:bold;
+  display:block;
+  width:34px;
+  height:27px;
+  line-height:27px;
+  text-align:center;
+  font-size:14px;
+}
 
 .eventlist {
   width:80%;

@@ -18,7 +18,7 @@ $(function() {
   var removing = false;
 
 	var timestamp = new Date().getTime();
-	
+
   models.player.observe(models.EVENT.CHANGE, function(event) {
 
     if (! models.player.playing) {
@@ -89,7 +89,7 @@ $(function() {
       $('#haters').html(facebookIcons(current.haters)).height($('#current-song-image').height());
     });
   }
-  
+
   playNextSong = function(data, start) {
     if (! start) start = 0;
 
@@ -142,29 +142,29 @@ $(function() {
   }
 
 	eventGuests = function( event_id ) {
-			
+
 			// locally saved access token
 		  var accessToken = localStorage.getObject("fb_accessToken");
-		
+
 		  // url to request
 		  var request_url = 'https://graph.facebook.com/' + event_id + '/attending';
-		
+
 		  var url = request_url + '?access_token=' + accessToken + '';
 		  $('#event_guests').html('');
-		  $.getJSON(url, function(data) { 
+		  $.getJSON(url, function(data) {
 		  	var guests = data.data;
 		  	for(var i=0;i<guests.length;i++) {
 		  		var guest_name = guests[i].name;
 		  		var guest_id = guests[i].id;
-		  		
+
 		  		var in_app = 'active';
-		  		
+
 		  		$('#event_guests').append('<img class="' + in_app + '" src="https://graph.facebook.com/' + guest_id + '/picture" title="' + guest_name + '"/>');
 		  	}
 		  })
-			
+
 	}
-	
+
   createTop10 = function(data, start) {
 
     if (! start) start = 0;
@@ -178,7 +178,7 @@ $(function() {
     $(data.Playlist).each(function(index, item) {
       if (index <= start) return;
 
-      list.append('<tr><td>' + ranking + '<td>' + item.artist + '<br>' + item.name + '</td><td>' + item.lovers.length + '</td><td>' + item.haters.length + '</td><td>'+facebookIcons([item.lovers[0]])+'</td></tr>');
+      list.append('<tr><td>' + ranking + '<td>' + item.artist + '<br>' + item.name + '</td><td><span class="heart">' + item.lovers.length + '</span></td><td><span class="hate">' + item.haters.length + '</span></td><td>'+facebookIcons([item.lovers[0]])+'</td></tr>');
 
       ranking ++;
     });
