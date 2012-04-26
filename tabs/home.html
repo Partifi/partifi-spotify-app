@@ -39,7 +39,14 @@
                   var user = data;
                   $('#user_photo').html('<img src="https://graph.facebook.com/'+user.id+'/picture" />');
                   $('#user_info').html(''+ user.name +'<br><a href="#" id="fb-logout">log me out</a>');
-                })
+                });
+
+                $('#fb-logout').live('click', function(){
+                  console.log("foo");
+                  localStorage.removeObject("fb_accessToken")
+                  document.location.href = "sp://partifi/index.html";
+                });
+
                 var eventID = localStorage.getObject("fb_event");
                 startPlaylist(eventID);
             });
@@ -59,6 +66,7 @@
 
         <div id="wrapper">
           <div id="current-song">
+            <h3>Current Song</h3>
             <div class="sizer">
             <div id='current-song-image'></div>
             <div id='lovers'></div>
@@ -84,7 +92,10 @@
               </tbody>
             </table>
           </div>
-        <div id="event_guests"></div>
+        <div class="eventlist">
+          <h2>Partygoers</h2>
+          <div id="event_guests"></div>
+        </div>
         </div><!-- /wrapper -->
     </body>
 </html>
