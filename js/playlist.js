@@ -50,7 +50,7 @@ $(function() {
 	
 	playlistLoadComplete = function(data) {
 		
-		console.log(data.Playlist[0].uri);
+		/* console.log(data.Playlist[0].uri); */
 		
 		if (models.player.playing && current && current.uri != data.Playlist[0].uri) {
 			current = null;
@@ -105,7 +105,6 @@ $(function() {
 		waitingToPlay = true;	
 			
 		$.getJSON("http://parti.fi:9292/playlist/" + currentEventID, playlistLoadComplete);
-	}
 	
 	mergeArtists = function(track) {
 		var ret = "";
