@@ -114,6 +114,8 @@ $(function() {
 
     waitingToPlay = true;
 
+		eventGuests( currentEventID );
+
     $.getJSON("http://partifi.herokuapp.com/playlist/" + currentEventID, playlistLoadComplete);
   }
 
@@ -139,6 +141,24 @@ $(function() {
     return ret;
   }
 
+	eventGuests = function( event_id ) {
+			
+			// locally saved access token
+		  var accessToken = localStorage.getObject("fb_accessToken");
+		
+		  // url to request
+		  var request_url = 'https://graph.facebook.com/' + event_id + '/attending';
+		
+		  var url = request_url + '?access_token=' + accessToken + '';
+		  $.getJSON(url, function(data) { 
+		  	var guests = data.data;
+		  	for(var i=0;i<guests.length;i++) {
+		  		var guest_name = guests[i].name;
+		  	}
+		  })
+			
+	}
+	
   createTop10 = function(data, start) {
 
     if (! start) start = 0;
