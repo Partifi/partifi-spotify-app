@@ -111,3 +111,69 @@ body {
     top:5px;right:5px;
   }
 
+
+/* home.html */
+
+.eventlink {
+  position:absolute;
+  left:5px;bottom:0px;
+  text-shadow:none;
+  color:#fff;
+  font-size:10px;
+}
+
+
+#current-song,
+#top10 {
+  width:45%;
+  display:inline-block;
+  margin:2%;
+  vertical-align:top;
+}
+
+
+#current-song {
+  color:#fff;
+  text-shadow:none;
+  padding:10px;
+}
+  #current-song h2 {
+    color:#fff;
+    clear:both;
+    text-align:center;
+    padding-top:10px;
+  }
+
+.sizer {
+  position:relative;
+  overflow:hidden;
+}
+#current-song-image {
+  width:80%;
+  position:relative;
+  float:left;
+  height:254px;
+}
+  #current-song-image img {max-width:100%;display:block;heigh:254px;}
+#lovers {
+  float:left;
+  width:10%;
+  height:100%;
+  background:#0f0;
+}
+#haters {
+float:left;
+ width:10%;
+ height:100%;
+ background:#f00;
+}
+
+#top10 {
+  color:#fff;
+  text-shadow:none;
+}
+#top10 h3 {color:#fff;}
+
+#top10 th {text-align:left;padding:5px;}
+#top10 tr td {vertical-align:top;border-bottom:1px solid #333;}
+

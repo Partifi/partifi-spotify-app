@@ -25,11 +25,7 @@ function get_facebook_events( accesstoken ){
                              '<span class="date">'+ $.timeago(event_date) + '</span></li>');
     }
 
-    $('#events ul li').mouseenter(function(){
-      $(this).css('background-color','#fff');
-    }).mouseleave(function(){
-      $(this).css('background-color','transparent');
-    }).click(function(){
+    $('#events ul li').click(function(){
       console.log($(this).attr('data-id'));
       localStorage.setObject("fb_event", $(this).attr('data-id'));
 
@@ -40,7 +36,6 @@ function get_facebook_events( accesstoken ){
 }
 
 function get_facebook_user( ){
-  console.log("more stuff");
   $('#fb-login').css('display','none');
 
   // locally saved access token
@@ -54,7 +49,6 @@ function get_facebook_user( ){
     $('#user_photo').html('<img src="https://graph.facebook.com/'+user.id+'/picture" />');
     $('#user_info').html(''+ user.name +'<br><a href="#" id="fb-logout">log me out</a>');
   })
-
 }
 
 $(document).ready(function() {

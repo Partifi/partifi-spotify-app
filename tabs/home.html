@@ -28,45 +28,63 @@
                     $('.section').hide();
                     $('#'+args[0]).show();
                 }
-                
+
+                // locally saved access token
+                var accessToken = localStorage.getObject("fb_accessToken");
+                // url to request
+                var request_url = 'https://graph.facebook.com/me';
+
+                var url = request_url + '?access_token=' + accessToken + '';
+                $.getJSON(url, function(data) {
+                  var user = data;
+                  $('#user_photo').html('<img src="https://graph.facebook.com/'+user.id+'/picture" />');
+                  $('#user_info').html(''+ user.name +'<br><a href="#" id="fb-logout">log me out</a>');
+                })
                 var eventID = localStorage.getObject("fb_event");
-                
-				startPlaylist(eventID);
+                startPlaylist(eventID);
             });
         </script>
     </head>
     <body>
+        <div id="topbar" class="active">
+          <h1><img src="sp://partifi/img/topicon.png"></h1>
+          <h2 id="tagline">Killing the 30 second DJ</h2>
+          <div id="user">
+            <div id="user_photo"></div>
+            <div id="user_info"></div>
+          </div>
+          <a class="eventlink" href='sp://partifi/index.html'>Pick another event</a>
+
+        </div>
+
         <div id="wrapper">
-	        <div id="index" class="section">
-				<a href='sp://partifi/index.html'>Back</a>	        
-	            <h1>Parti.fi - Home</h1>
-				<div id="current-song">
-					<div id='current-song-image'></div>
-					<h2></h2>
-					<h3>Lovers</h3>
-					<div id='lovers'></div>
-					<h3>Haters</h3>
-					<div id='haters'></div>
-				</div>
-				<div id="top10">
-					<h3>Next songs</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>&nbsp;</th>
-								<th>Song</th>
-								<th>Artist</th>
-								<th>Love</th>
-								<th>Hate</th>
-								<th>Submitted by</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>				
-				</div>
-	        </div><!-- /index -->
-        
+          <div id="current-song">
+            <div class="sizer">
+            <div id='current-song-image'></div>
+            <div id='lovers'></div>
+            <div id='haters'></div>
+            </div>
+            <h2></h2>
+
+          </div>
+
+          <div id="top10">
+            <h3>Upcoming Songs</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Song</th>
+                  <th>Love</th>
+                  <th>Hate</th>
+                  <th>By</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
         </div><!-- /wrapper -->
     </body>
 </html>
+
