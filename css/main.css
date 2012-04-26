@@ -178,6 +178,7 @@ float:left;
  width:10%;
  height:100%;
  background:#f69 url(../img/heart-dislike.png) no-repeat center 2px;
+ padding-top:40px;
 }
   #lovers img,
   #haters img {max-width:100%;display:block;}
