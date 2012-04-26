@@ -145,18 +145,16 @@ background-image: -webkit-gradient(
 #current-song {
   color:#fff;
   text-shadow:none;
-  padding:10px;
 }
   #current-song h2 {
     color:#fff;
     clear:both;
-    text-align:center;
-    padding-top:10px;
   }
-
+  #current-song h3 {color:#fff;}
 .sizer {
   position:relative;
   overflow:hidden;
+  margin-bottom:10px;
 }
 #current-song-image {
   width:80%;
@@ -195,6 +193,7 @@ float:left;
   border-radius:4px;
   background:#666;
   border:1px solid #000;
+  border-bottom-color:#fff;
   text-align:center;
   color:#fff;
   padding:10px;
