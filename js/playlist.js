@@ -83,7 +83,7 @@ $(function() {
   }
 
   showCurrent = function() {
-    $('#current-song h2').text(currentTrack.artists[0].name + " - " + currentTrack.name);
+    $('#current-song h2').html(currentTrack.artists[0].name + " - " + currentTrack.name);
     $('#current-song-image').html("<img src='"+currentTrack.image+"' />").find("img").load(function () {
       $('#lovers').html(facebookIcons(current.lovers)).height($('#current-song-image').height());
       $('#haters').html(facebookIcons(current.haters)).height($('#current-song-image').height());
