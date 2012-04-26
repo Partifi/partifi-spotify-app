@@ -44,7 +44,7 @@ $(function() {
   removeTrack = function(track) {
     removing = true;
 
-    $.post('http:///partifi.herokuapp.com/song/' + track.href, {}, function(data) {
+    $.post('http:///partifi.herokuapp.com/playlist/'+ currentEventID + '/' + track.href, {}, function(data) {
       removing = false;
 
       if (timeout) clearTimeout(timeout);
@@ -98,11 +98,20 @@ $(function() {
     console.log(current);
 
     models.Track.fromURI(current.href, function(track) {
-
+			
+			console.log(track);
+			
       currentTrack = track;
-
-      models.player.track = track;
-      models.player.playing = true;
+      
+			if(track.playable==true){
+	      models.player.track = track;
+	      models.player.playing = true;
+      }else{
+      	models.player.track = track;
+      	
+	      removeTrack( current );
+	      updatePlaylist();
+      }
 
       showCurrent();
     });
@@ -135,7 +144,9 @@ $(function() {
     ret = "";
 
     $(arr).each(function(index, item) {
+    	if(item){
       ret += "<img src='https://graph.facebook.com/"+item+"/picture' /> ";
+      }
     });
 
     return ret;
